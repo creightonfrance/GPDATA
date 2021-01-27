@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { HttpService } from '../http.service';
 @Component({
   selector: 'app-authorization',
   templateUrl: './authorization.component.html',
@@ -7,17 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthorizationComponent implements OnInit {
 
-  clickCounter: number = 0;
-  name: string = '';
   token: string = '';
+  authToken: string = '';
 
-  constructor() { }
+  constructor(private _http: HttpService) { }
 
   ngOnInit(): void {
+    if(sessionStorage.getItem("authToken") != null) {
+      this.authToken = sessionStorage.getItem("authToken") || '';
+    }
   }
 
-  countClick() {
-    this.clickCounter += 1;
+  runAuth() {
+    this._http.authorizeUser(this.token).subscribe((data:any) => {
+      this.authToken = data.token;
+      sessionStorage.setItem("authToken", this.authToken);
+    });
   }
 
 }
