@@ -7,6 +7,7 @@ import { AuthorizationComponent } from './authorization/authorization.component'
 import { ImpactsByDateComponent } from './impacts-by-date/impacts-by-date.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { Angular2CsvModule } from 'angular2-csv';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Angular2CsvModule
   ],
   providers: [],
   bootstrap: [AppComponent]

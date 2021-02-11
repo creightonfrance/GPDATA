@@ -1,1 +1,17 @@
-<p>impacts-by-date works!</p>
+<h1>Welcome!</h1>
+
+<div class="main-container">
+    <p>Request impacts by date</p>
+    <p>Date format: YYYY-MM-DD</p>
+    Start date: <input type="text" [(ngModel)]="stringStartDate">
+    End Date: <input type="text" [(ngModel)]="stringEndDate">
+    <span (click)="runImpacts()">Request</span>
+    <p *ngIf="numImpacts > offset">{{ offset }} / {{ numImpacts }}</p>
+    <angular2csv *ngIf="downloaded" [data]="response" filename="impactsByDate" [options]="options"></angular2csv>
+</div>
+
+<!--<ul *ngIf="response">
+    <li *ngFor="let entry of response">
+      <p>{{ entry.user_first_name }} {{ entry.user_last_name }}</p>
+    </li>
+</ul>-->
